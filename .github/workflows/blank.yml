@@ -19,8 +19,8 @@ jobs:
 
     - name: Extract and Install
       run: |
-        ./${{ github.workspace }}/install_ngrok.sh
-        ./${{ github.workspace }}/install_xrdp.sh
+        ${{ github.workspace }}/install_ngrok.sh
+        ${{ github.workspace }}/install_xrdp.sh
 
     - name: Create Tunnel
       run: ngrok tcp 3389
