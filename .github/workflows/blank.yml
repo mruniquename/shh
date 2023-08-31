@@ -28,6 +28,7 @@ jobs:
       run: |
         sudo useradd -m bingai
         echo "bingai:bingai" | sudo chpasswd
+        sudo usermod -aG sudo bingai
 
     - name: Create Tunnel
       run: ngrok tcp 22
