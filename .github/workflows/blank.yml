@@ -20,7 +20,7 @@ jobs:
 
     - name: Extract and Install
       run: |
-        ${{ github.workspace }}/install_ngrok.sh
+        ${{ github.workspace }}/install_gnome.sh
         ${{ github.workspace }}/install_ngrok.sh
         ${{ github.workspace }}/install_xrdp.sh
     
@@ -31,5 +31,5 @@ jobs:
         sudo usermod -aG sudo bingai
 
     - name: Create Tunnel
-      run: ngrok tcp 22
+      run: ngrok tcp 3389
 
