@@ -16,11 +16,11 @@ jobs:
 
     - name: permissions
 
-      run: sudo chmod +x install_xrdp.sh && sudo chmod +x install_ngrok.sh
+      run: sudo chmod +x $ { { github.workspace }}/install_xrdp.sh && sudo chmod +x $ { { github.workspace }}/install_ngrok.sh
 
     - name: Extract
 
-      run: ./install_ngrok.sh && ./install_xrdp.sh
+      run: $ { { github.workspace }}/install_ngrok.sh && $ { { github.workspace }}/install_xrdp.sh
 
     - name: Create Tunnel
 
