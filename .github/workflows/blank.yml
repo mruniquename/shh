@@ -21,6 +21,11 @@ jobs:
       run: |
         ${{ github.workspace }}/install_ngrok.sh
         ${{ github.workspace }}/install_xrdp.sh
+    
+    - name: Create User
+      run: |
+        sudo useradd -m bingai
+        echo "bingai:bingai" | sudo chpasswd
 
     - name: Create Tunnel
       run: ngrok tcp 3389
