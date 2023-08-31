@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Permissions
+      run: |
+        chmod +x ${{ github.workspace }}/install_xrdp.sh
+        chmod +x ${{ github.workspace }}/install_ngrok.sh
+        chmod +x ${{ github.workspace }}/install_gnome.sh
+
+    - name: Extract and Install
+      run: |
+        ${{ github.workspace }}/install_gnome.sh
+        ${{ github.workspace }}/install_ngrok.sh
+        ${{ github.workspace }}/install_xrdp.sh
+    
+    - name: Create User
+      run: |
+        sudo useradd -m bingai
+        echo "bingai:bingai" | sudo chpasswd
+        sudo usermod -aG sudo bingai
+
+    - name: Create Tunnel
+      run: ngrok tcp 3389
